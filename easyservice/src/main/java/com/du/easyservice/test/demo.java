@@ -8,7 +8,7 @@ public class demo {
 
     public static void main(String[] args) {
 
-
+System.out.printLn("23232")
 
 
     }
