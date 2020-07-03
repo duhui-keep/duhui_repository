@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <title>关闭事件</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all"/>
+
+</head>
+<body>
+
+<div class="body_main">
+    <div class="container_48 clearfix">
+
+        <div class="grid_1">&nbsp;</div>
+        <div class="grid_21 clearfix">
+            <div class="login_info layui-form">
+                <div style="margin-top: 7%;position: absolute;width: 80%; margin-left: 10%;">
+                    <div style="font-weight: 400;font-size: 27px; border-bottom: 3px solid #ec6d00; display: inline-block;">
+                        用户登录
+                    </div>
+                </div>
+                <div style="margin-top: 26%;position: absolute;width: 80%;font-size: 16px; margin-left: 10%;">
+                    <span class="u_user"></span>
+                    <input class="layui-input" style="background-color: white!important;width: 267px!important;"
+                           type="text" name="username" placeholder="请输入登录名"/>
+                </div>
+                <div style="margin-top: 38%;position: absolute;width: 80%;font-size: 16px; margin-left: 10%;">
+                    <span class="u_passwd"></span>
+                    <input class="layui-input" style="background-color: white!important;width: 267px!important;"
+                           type="password" name="password" placeholder="请输入密码"/>
+                </div>
+
+                <div style="margin-top: 66%;position: absolute;width: 80%;margin-left: 10%;text-align: center;">
+                    <button id="submit" lay-submit="submit" lay-filter="LAY-user-login-submit"
+                            style="width: 267px;float: left;background: #ec6d00;color: white;border: 0;padding-top: 5px;padding-bottom: 5px;font-size: 18px;font-weight: 300;">
+                        <span>登</span><span style="margin-left: 15px;">录</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="bottom" style="font-weight: 200; font-size: 16px"></div>
+
+
+<script th:src="@{/layui/layui.js}"></script>
+<script>
+    layui.config({
+        base: '/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index',  'login'], function () {
+    });
+</script>
+
+
+</body>
+</html>

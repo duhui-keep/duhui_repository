@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <title>关闭事件</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all"/>
+
+</head>
+<body>
+登录成功!
+
+<script th:src="@{/layui/layui.js}"></script>
+<script>
+    layui.config({
+        base: '/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'login'], function () {
+    });
+</script>
+
+
+</body>
+</html>
