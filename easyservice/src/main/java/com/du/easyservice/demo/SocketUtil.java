@@ -14,7 +14,7 @@ public class SocketUtil {
 
 /*
 
-        String s = tcpPost("10.255.2.211", "8010",new String("<?xml version='1.0' encoding='GBK'?><msg> <msg_head><msg_type>0</msg_type> <msg_id>1005</msg_id><msg_sn>0</msg_sn><version>1</version></msg_head><msg_body><origin_data_len>95</origin_data_len><origin_data>150010122000038316|�����������Ͷ�ʵ����ɷ����޹�˾|150010122000022226|��|1.00</origin_data> </msg_body> </msg>".getBytes(),"GBK"));
+        String s = tcpPost("10.255.2.211", "8010",new String("<?xml version='1.0' encoding='GBK'?><msg> <msg_head><msg_type>0</msg_type> <msg_id>1005</msg_id><msg_sn>0</msg_sn><version>1</version></msg_head><msg_body><origin_data_len>95</origin_data_len><origin_data>150010122000038316|黑龙江北大荒投资担保股份有限公司|150010122000022226|五|1.00</origin_data> </msg_body> </msg>".getBytes(),"GBK"));
 
         s = "MIIGIAYJKoZIhvcNAQcCoIIGETCCBg0CAQExCzAJBgUrDgMCGgUAMG4GCSqGSIb3\n" +
                 "DQEHAaBhBF8xNTAwMTAxMjIwMDAwMzgzMTZ86buR6b6Z5rGf5YyX5aSn6I2S5oqV\n" +
@@ -51,11 +51,11 @@ public class SocketUtil {
                 "gpkhVjQvAO6gYqan2LEMuLjLwXAx05F3S7vj82i3i2Y+afiN";
 
         String  send = "CBE003|#<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                "<QLBankData><opReq><bsnCode>CBE003</bsnCode><cstNo>30000143</cstNo><reqTime>20200702160148</reqTime><ReqParam><serialNo>146T27A02Q8F094C</serialNo><payAccount>150010122000038316</payAccount><currencyType>CNY</currencyType><payAccountName>�����������Ͷ�ʵ����ɷ����޹�˾</payAccountName><recAccount>150010122000022226</recAccount><recAccountName>��</recAccountName><tranAmt>1.00</tranAmt><payUse>11111</payUse><remark>11111</remark><branchId>2600</branchId><signDataStr>150010122000038316|�����������Ͷ�ʵ����ɷ����޹�˾|150010122000022226|��|1.00</signDataStr>"+s +"<signData>\n" +
+                "<QLBankData><opReq><bsnCode>CBE003</bsnCode><cstNo>30000143</cstNo><reqTime>20200702160148</reqTime><ReqParam><serialNo>146T27A02Q8F094C</serialNo><payAccount>150010122000038316</payAccount><currencyType>CNY</currencyType><payAccountName>黑龙江北大荒投资担保股份有限公司</payAccountName><recAccount>150010122000022226</recAccount><recAccountName>五</recAccountName><tranAmt>1.00</tranAmt><payUse>11111</payUse><remark>11111</remark><branchId>2600</branchId><signDataStr>150010122000038316|黑龙江北大荒投资担保股份有限公司|150010122000022226|五|1.00</signDataStr>"+s +"<signData>\n" +
                 "</signData></ReqParam></opReq></QLBankData>";
 */
 
-String  a = "6����������֧��=====����xml<?xml version=\"1.0\" encoding=\"UTF-8\" ?><QLBankData><opRep><opResult><code>0000</code></opResult><opResult><payBal/><payBalAvl/><totalAmt/><errorCode>310019</errorCode><errorMessage>��姝ゅ��?���__150010122000022226</errorMessage></opResult></opRep></QLBankData>";
+String  a = "6锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷支锟斤拷=====锟斤拷锟斤拷xml<?xml version=\"1.0\" encoding=\"UTF-8\" ?><QLBankData><opRep><opResult><code>0000</code></opResult><opResult><payBal/><payBalAvl/><totalAmt/><errorCode>310019</errorCode><errorMessage>锟斤拷濮濄倕锟解?筹拷锟絖_150010122000022226</errorMessage></opResult></opRep></QLBankData>";
         System.out.println(new String(a.getBytes("UTF-8"),"GBK"));
 
 
@@ -65,7 +65,7 @@ String  a = "6����������֧��=====����xml<?xml ve
 
 
     /**
-     * ����socket����
+     * 发送socket请求
      * @param clientIp
      * @param clientPort
      * @param msg
@@ -75,13 +75,13 @@ String  a = "6����������֧��=====����xml<?xml ve
         String rs = "";
 
         if(clientIp==null||"".equals(clientIp)||clientPort==null||"".equals(clientPort)){
-            logger.error("Ip��˿ڲ�����...");
+            logger.error("Ip或端口不存在...");
             return null;
         }
 
         int clientPortInt = Integer.parseInt(clientPort);
 
-        logger.info("clientIp��"+clientIp+" clientPort��"+clientPort);
+        logger.info("clientIp："+clientIp+" clientPort："+clientPort);
 
         Socket s = null;
         OutputStream out = null;
@@ -95,8 +95,8 @@ String  a = "6����������֧��=====����xml<?xml ve
             out = s.getOutputStream();
             in = s.getInputStream();
 
-            //׼������msg
-            logger.info("׼�����ͱ��ģ�"+msg);
+            //准备报文msg
+            logger.info("准备发送报文："+msg);
 
             out.write(msg.getBytes("GBK"));
             out.flush();
@@ -109,9 +109,9 @@ String  a = "6����������֧��=====����xml<?xml ve
 
 
         } catch (Exception e) {
-            logger.error("tcpPost���������쳣��"+e.getMessage());
+            logger.error("tcpPost发送请求异常："+e.getMessage());
         }finally{
-            logger.info("tcpPost(rs)��"+rs);
+            logger.info("tcpPost(rs)："+rs);
             try {
                 if(out!=null){
                     out.close();
@@ -135,7 +135,7 @@ String  a = "6����������֧��=====����xml<?xml ve
     }
 
     /**
-     * ��ȡ������
+     * 读取输入流
      * @param in
      * @return
      */
@@ -157,7 +157,7 @@ String  a = "6����������֧��=====����xml<?xml ve
 
             b = outSteam.toByteArray();
         } catch (IOException e) {
-            logger.error("��ȡ����Ϣ�쳣"+e);
+            logger.error("读取流信息异常"+e);
             e.printStackTrace();
         } finally{
             try {

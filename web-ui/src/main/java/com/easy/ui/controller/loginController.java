@@ -21,13 +21,12 @@ public class loginController {
         try {
             subject.login(token);
         } catch (AuthenticationException e) {
-            System.out.println(e
-            );
+            System.out.println(e);
         }
         return "index";
     }
 
-    @Scheduled(cron = "* * * * * ? ")
+
     public void corn(){
         System.out.println(new Date());
     }

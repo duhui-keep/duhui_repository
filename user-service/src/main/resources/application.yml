@@ -1,0 +1,10 @@
+server:
+  port: 20002
+spring:
+  application:
+    name: user-servcie
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.93.8.251:3306:mysql
+    username: root
+    password: future1995.
